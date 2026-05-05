@@ -495,10 +495,10 @@
               <div class="game-badge badge-think">Think</div>
             </div>
 
-            <div class="game-card">
+            <div class="game-card" onclick="showStoryLengthPicker()">
               <div class="game-icon fi-green">📖</div>
               <div class="game-name">Story Time</div>
-              <div class="game-desc">Luna tells you a magical story — you pick the adventure!</div>
+              <div class="game-desc">Luna tells a magical story — you pick the adventure!</div>
               <div class="game-badge badge-chill">Chill</div>
             </div>
 
@@ -524,6 +524,120 @@
             </div>
 
           </div>
+        </div>
+      </div>
+
+      <!-- STORY BUILDER -->
+      <div class="view" id="view-story">
+        <div class="sky"></div>
+
+        <div class="topbar">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="back-btn" onclick="endStory()">← Home</button>
+            <span style="font-size:16px;font-weight:900;color:white;">📖 Story Time with Luna</span>
+          </div>
+          <div class="topbar-right">
+            <span class="ico">📶 🔋</span>
+            <span class="clk">7:30 pm</span>
+          </div>
+        </div>
+
+        <div class="story-body">
+
+          <!-- length picker — shown before story starts -->
+          <div class="story-length-picker" id="story-length-picker">
+            <div class="slp-orb">
+              <div class="orb-wrap" style="pointer-events:none;">
+                <div class="og1"></div>
+                <div class="og2"></div>
+                <div class="orb-ball">
+                  <div class="orb-face">
+                    <div class="orb-eyes">
+                      <div class="orb-eye"></div>
+                      <div class="orb-eye"></div>
+                    </div>
+                    <div class="orb-mouth"></div>
+                    <div class="orb-cheeks">
+                      <div class="orb-cheek"></div>
+                      <div class="orb-cheek"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slp-title">How long should the story be? 📖</div>
+            <div class="slp-options">
+              <div class="slp-btn" onclick="startStory(2)">
+                <div class="slp-emoji">⚡</div>
+                <div class="slp-name">Short</div>
+                <div class="slp-desc">2 chapters — quick and fun</div>
+              </div>
+              <div class="slp-btn" onclick="startStory(4)">
+                <div class="slp-emoji">📖</div>
+                <div class="slp-name">Medium</div>
+                <div class="slp-desc">4 chapters — a proper adventure</div>
+              </div>
+              <div class="slp-btn" onclick="startStory(6)">
+                <div class="slp-emoji">🌟</div>
+                <div class="slp-name">Long</div>
+                <div class="slp-desc">6 chapters — an epic tale</div>
+              </div>
+            </div>
+            <button class="back-btn" onclick="endStory()">← Back</button>
+          </div>
+
+          <div class="story-left">
+            <div class="orb-sm">
+              <div class="orb-sm-ball">
+                <div class="orb-sm-face">
+                  <div class="sm-eyes">
+                    <div class="sm-eye"></div>
+                    <div class="sm-eye"></div>
+                  </div>
+                  <div class="sm-mouth"></div>
+                  <div class="sm-cheeks">
+                    <div class="sm-cheek"></div>
+                    <div class="sm-cheek"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="story-luna-name">Luna</div>
+            <div class="story-luna-sub">Your storyteller 📖</div>
+            <div class="story-progress-wrap">
+              <div class="story-progress-label">Story Progress</div>
+              <div class="story-progress-bar">
+                <div class="story-progress-fill" id="story-progress-fill"></div>
+              </div>
+              <div class="story-progress-step" id="story-progress-step">Chapter 1 of 4</div>
+            </div>
+            <button class="back-btn" style="margin-top:auto;" onclick="endStory()">End Story</button>
+          </div>
+
+          <div class="story-right">
+            <div class="story-text-wrap">
+              <div class="story-text" id="story-text">
+                Once upon a time...
+              </div>
+              <div class="story-typing" id="story-typing" style="display:none;">
+                <div class="tdot"></div>
+                <div class="tdot"></div>
+                <div class="tdot"></div>
+              </div>
+            </div>
+
+            <div class="story-choices" id="story-choices">
+              <!-- choices injected by JS -->
+            </div>
+
+            <div class="story-end-wrap" id="story-end-wrap" style="display:none;">
+              <div class="story-end-msg">🌟 The End! What a great adventure!</div>
+              <button class="story-restart-btn" onclick="startStory()">Play Again ✨</button>
+              <button class="story-restart-btn" style="background:rgba(255,255,255,.1);margin-top:8px;"
+                onclick="endStory()">Back to Home</button>
+            </div>
+          </div>
+
         </div>
       </div>
 
