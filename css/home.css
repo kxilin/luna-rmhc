@@ -1,0 +1,100 @@
+/* ── HOME ORBIT LAYOUT ── */
+.home-orbit {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+/* center luna + greeting */
+.orbit-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.home-hi {
+  text-align: center;
+  color: white;
+}
+.home-hi h2 {
+  font-size: 22px;
+  font-weight: 900;
+}
+.home-hi .heart { color: #fbbf24; }
+.home-hi p {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: .8;
+  margin-top: 2px;
+}
+
+.home-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,.6);
+  text-align: center;
+}
+
+/* ── ORBIT CARDS ── */
+.orbit-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  /* 
+    1. move to center
+    2. rotate to the card's angle
+    3. push outward by radius
+    4. counter-rotate so card stays upright
+  */
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateY(calc(-1 * var(--r)))
+    rotate(calc(-1 * var(--angle)));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .22s ease;
+}
+
+.orbit-card:hover {
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateY(calc(-1 * var(--r) - 8px))
+    rotate(calc(-1 * var(--angle)));
+}
+
+.oc-icon {
+  width: 68px; height: 68px;
+  border-radius: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  transition: box-shadow .2s, transform .2s;
+}
+.orbit-card:hover .oc-icon {
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+  transform: scale(1.08);
+}
+
+.oc-label {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 6px rgba(0,0,0,.5);
+  white-space: nowrap;
+}

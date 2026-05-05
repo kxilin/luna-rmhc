@@ -1,0 +1,227 @@
+/* ── CONTACT LAYOUT ── */
+.contact-body {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+  padding: 12px 24px 16px;
+  min-height: 0;
+}
+
+/* ── LEFT PANEL ── */
+.contact-left {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-status-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.contact-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 0 20px rgba(110,231,183,.3);
+}
+
+.contact-name {
+  font-size: 16px;
+  font-weight: 900;
+  color: white;
+}
+.contact-role {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,.45);
+}
+
+.contact-status-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(110,231,183,.12);
+  border: 1px solid rgba(110,231,183,.28);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 10px; font-weight: 800; color: #6ee7b7;
+}
+.contact-status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #6ee7b7;
+  animation: odotblink 2s infinite;
+}
+
+/* call button */
+.call-btn {
+  width: 100%; padding: 13px; border-radius: 14px; border: none;
+  cursor: pointer; font-family: 'Nunito', sans-serif;
+  font-size: 14px; font-weight: 800;
+  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+  color: white;
+  box-shadow: 0 5px 18px rgba(59,130,246,.35);
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  transition: transform .18s, box-shadow .18s;
+  user-select: none;
+}
+.call-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(59,130,246,.45);
+}
+.call-btn.calling {
+  background: linear-gradient(135deg, #f87171, #dc2626);
+  animation: rpulse 1.4s ease-in-out infinite;
+}
+
+/* info rows */
+.contact-info-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact-info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.contact-info-icon {
+  font-size: 16px;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.contact-info-text { flex: 1; min-width: 0; }
+.contact-info-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: rgba(255,255,255,.35);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.contact-info-value {
+  font-size: 12px;
+  font-weight: 800;
+  color: white;
+  margin-top: 1px;
+}
+
+/* ── RIGHT PANEL: CHAT ── */
+.contact-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.contact-chat-header {
+  padding: 0 0 10px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  flex-shrink: 0;
+}
+.contact-chat-header h3 {
+  font-size: 14px;
+  font-weight: 900;
+  color: white;
+}
+.contact-chat-header p {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,.4);
+  margin-top: 2px;
+}
+
+.contact-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+.contact-msgs::-webkit-scrollbar { width: 3px; }
+.contact-msgs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+
+/* reuse .msg .bubble from chat.css */
+.msg.desk .bubble {
+  background: rgba(110,231,183,.12);
+  border: 1px solid rgba(110,231,183,.2);
+  color: white;
+  border-bottom-left-radius: 4px;
+}
+
+.contact-input-bar {
+  padding: 10px 0 0;
+  border-top: 1px solid rgba(255,255,255,.07);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* calling overlay */
+.calling-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: rgba(10,15,50,.92);
+  backdrop-filter: blur(12px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.calling-overlay.active { display: flex; }
+
+.calling-avatar {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 46px;
+  box-shadow: 0 0 40px rgba(110,231,183,.4);
+  animation: callPulse 1.5s ease-in-out infinite;
+}
+@keyframes callPulse {
+  0%,100%{ box-shadow: 0 0 30px rgba(110,231,183,.4); }
+  50%    { box-shadow: 0 0 60px rgba(110,231,183,.7); }
+}
+
+.calling-name {
+  font-size: 24px;
+  font-weight: 900;
+  color: white;
+}
+.calling-status {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.55);
+}
+
+.end-call-btn {
+  width: 64px; height: 64px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, #f87171, #dc2626);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; cursor: pointer;
+  box-shadow: 0 6px 20px rgba(220,38,38,.45);
+  transition: transform .18s; margin-top: 10px;
+}
+.end-call-btn:hover { transform: scale(1.08); }

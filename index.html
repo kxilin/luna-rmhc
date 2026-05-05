@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luna – RMHC Companion</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/profiles.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/music.css">
+  <link rel="stylesheet" href="css/games.css">
+  <link rel="stylesheet" href="css/info.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="tablet-outer">
+    <div class="tablet-screen">
+
+      <!-- 0. FAMILY SELECT -->
+      <div class="view active" id="view-families">
+        <div class="sky"></div>
+        <div class="moon-deco">🌙</div>
+
+        <div class="profiles-wrap">
+
+          <div class="profiles-header">
+            <div class="brand">
+              <div class="brand-logo">🏠</div>
+              <div class="brand-text">
+                <div class="b1">Ronald McDonald<br>House Charities™</div>
+                <div class="b2">Greater Western Sydney</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profiles-hero">
+            <div class="orb-wrap" style="pointer-events:none;">
+              <div class="orb-glow1"></div>
+              <div class="orb-glow2"></div>
+              <div class="orb-ball">
+                <div class="orb-face">
+                  <div class="orb-eyes">
+                    <div class="orb-eye"></div>
+                    <div class="orb-eye"></div>
+                  </div>
+                  <div class="orb-mouth"></div>
+                  <div class="orb-cheeks">
+                    <div class="orb-cheek"></div>
+                    <div class="orb-cheek"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="profiles-hero-text">
+              <h1>Welcome! 👋</h1>
+              <p>Which family are you from?</p>
+            </div>
+          </div>
+
+          <div class="profiles-grid">
+
+            <div class="profile-card" onclick="selectFamily('Smith')">
+              <div class="profile-avatar">🏡</div>
+              <div class="profile-name">Smith Family</div>
+              <div class="profile-age">Room 4 · Day 3</div>
+            </div>
+
+            <div class="profile-card" onclick="selectFamily('Johnson')">
+              <div class="profile-avatar">🌻</div>
+              <div class="profile-name">Johnson Family</div>
+              <div class="profile-age">Room 7 · Day 1</div>
+            </div>
+
+            <div class="profile-card" onclick="selectFamily('Nguyen')">
+              <div class="profile-avatar">🌊</div>
+              <div class="profile-name">Nguyen Family</div>
+              <div class="profile-age">Room 2 · Day 6</div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 1. PROFILE SELECT -->
+      <div class="view" id="view-profiles">
+        <div class="sky"></div>
+        <div class="moon-deco">🌙</div>
+
+        <div class="profiles-wrap">
+
+          <div class="profiles-header">
+            <div class="brand">
+              <div class="brand-logo">🏠</div>
+              <div class="brand-text">
+                <div class="b1">Ronald McDonald<br>House Charities™</div>
+                <div class="b2">Greater Western Sydney</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profiles-hero">
+            <div class="profiles-hero-text">
+              <h1>Who's using Luna? 🌙</h1>
+              <p>Tap your profile to get started.</p>
+            </div>
+          </div>
+
+          <div class="profiles-family-label" id="family-label">My Family</div>
+
+          <div class="profiles-grid">
+
+            <div class="profile-card" data-family="Smith"
+              onclick="selectProfile({ name: 'Matilda', age: 8, emoji: '🦊', type: 'child' })">
+              <div class="profile-avatar">🦊</div>
+              <div class="profile-name">Matilda</div>
+              <div class="profile-age">Age 8</div>
+            </div>
+
+            <div class="profile-card" data-family="Smith"
+              onclick="selectProfile({ name: 'Jake', age: 5, emoji: '🐻', type: 'child' })">
+              <div class="profile-avatar">🐻</div>
+              <div class="profile-name">Jake</div>
+              <div class="profile-age">Age 5</div>
+            </div>
+
+            <div class="profile-card" data-family="Smith"
+              onclick="selectProfile({ name: 'Sarah', age: 38, emoji: '🌸', type: 'parent' })">
+              <div class="profile-avatar">🌸</div>
+              <div class="profile-name">Sarah</div>
+              <div class="profile-age">Parent</div>
+            </div>
+
+            <div class="profile-card" data-family="Johnson"
+              onclick="selectProfile({ name: 'Emily', age: 10, emoji: '🌟', type: 'child' })">
+              <div class="profile-avatar">🌟</div>
+              <div class="profile-name">Emily</div>
+              <div class="profile-age">Age 10</div>
+            </div>
+
+            <div class="profile-card" data-family="Johnson"
+              onclick="selectProfile({ name: 'Mark', age: 42, emoji: '🎯', type: 'parent' })">
+              <div class="profile-avatar">🎯</div>
+              <div class="profile-name">Mark</div>
+              <div class="profile-age">Parent</div>
+            </div>
+
+            <div class="profile-card" data-family="Nguyen"
+              onclick="selectProfile({ name: 'Linh', age: 7, emoji: '🌈', type: 'child' })">
+              <div class="profile-avatar">🌈</div>
+              <div class="profile-name">Linh</div>
+              <div class="profile-age">Age 7</div>
+            </div>
+
+            <div class="profile-card" data-family="Nguyen"
+              onclick="selectProfile({ name: 'Hana', age: 35, emoji: '🌺', type: 'parent' })">
+              <div class="profile-avatar">🌺</div>
+              <div class="profile-name">Hana</div>
+              <div class="profile-age">Parent</div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2. HOME -->
+      <div class="view" id="view-home">
+        <div class="sky"></div>
+        <div class="moon-deco">🌙</div>
+
+        <div class="topbar">
+          <div class="brand">
+            <div class="brand-logo">🏠</div>
+            <div class="brand-text">
+              <div class="b1">Ronald McDonald<br>House Charities™</div>
+              <div class="b2">Greater Western Sydney</div>
+            </div>
+          </div>
+          <div class="topbar-right">
+            <div class="active-profile-pill" onclick="goTo('families')">
+              <span id="home-profile-emoji">🦊</span>
+              <span id="home-profile-name">Matilda</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-orbit">
+
+          <!-- center -->
+          <div class="orbit-center">
+            <div class="home-hi">
+              <h2>Hi, <span id="home-greeting-name">there</span>! <span class="heart">♥</span></h2>
+              <p>I'm Luna, I'm here for you.</p>
+            </div>
+            <div class="orb-wrap" onclick="goTo('chat')">
+              <div class="orb-glow1"></div>
+              <div class="orb-glow2"></div>
+              <div class="orb-ball">
+                <div class="orb-face">
+                  <div class="orb-eyes">
+                    <div class="orb-eye"></div>
+                    <div class="orb-eye"></div>
+                  </div>
+                  <div class="orb-mouth"></div>
+                  <div class="orb-cheeks">
+                    <div class="orb-cheek"></div>
+                    <div class="orb-cheek"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="home-tag">Tap me to start chatting 💜</div>
+          </div>
+
+          <!-- orbit cards -->
+          <div class="orbit-card" style="--angle:0deg; --r:230px" onclick="goTo('chat')">
+            <div class="oc-icon fi-purple">💬</div>
+            <div class="oc-label">Talk to Luna</div>
+          </div>
+
+          <div class="orbit-card" style="--angle:72deg; --r:230px" onclick="goTo('music')">
+            <div class="oc-icon fi-red">🎵</div>
+            <div class="oc-label">Music</div>
+          </div>
+
+          <div class="orbit-card" style="--angle:144deg; --r:230px" onclick="goTo('games')">
+            <div class="oc-icon fi-green">🎮</div>
+            <div class="oc-label">Games & Fun</div>
+          </div>
+
+          <div class="orbit-card" style="--angle:216deg; --r:230px" onclick="goTo('info')">
+            <div class="oc-icon fi-blue">📋</div>
+            <div class="oc-label">House Info</div>
+          </div>
+
+          <div class="orbit-card" style="--angle:288deg; --r:230px" onclick="goTo('contact')">
+            <div class="oc-icon fi-yellow">📞</div>
+            <div class="oc-label">Front Desk</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3. CHAT WITH LUNA -->
+      <div class="view" id="view-chat">
+        <div class="sky"></div>
+
+        <div class="chat-row">
+
+          <!-- sidebar -->
+          <div class="chat-side">
+
+            <div class="orb-sm">
+              <div class="orb-sm-ball">
+                <div class="orb-sm-face">
+                  <div class="sm-eyes">
+                    <div class="sm-eye"></div>
+                    <div class="sm-eye"></div>
+                  </div>
+                  <div class="sm-mouth"></div>
+                  <div class="sm-cheeks">
+                    <div class="sm-cheek"></div>
+                    <div class="sm-cheek"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="side-title">Luna</div>
+            <div class="side-sub">Tap the mic to talk,<br>or type below 🌙</div>
+
+            <div class="voice-panel">
+              <div class="vp-lbl">Voice Activity</div>
+              <div class="wave-bars" id="wave-bars">
+                <div class="wb"></div>
+                <div class="wb"></div>
+                <div class="wb"></div>
+                <div class="wb"></div>
+                <div class="wb"></div>
+                <div class="wb"></div>
+                <div class="wb"></div>
+                <div class="wb"></div>
+                <div class="wb"></div>
+              </div>
+              <div class="vp-status" id="vp-status">Tap mic to speak</div>
+            </div>
+
+            <button class="mic-btn" id="mic-btn"
+              onmousedown="this.classList.add('on'); document.getElementById('mic-lbl').textContent='Listening...'; document.getElementById('mic-icon').textContent='🔴'; document.getElementById('wave-bars').classList.add('on');"
+              onmouseup="this.classList.remove('on'); document.getElementById('mic-lbl').textContent='Hold to Talk'; document.getElementById('mic-icon').textContent='🎙️'; document.getElementById('wave-bars').classList.remove('on');">
+              <span id="mic-icon">🎙️</span>
+              <span id="mic-lbl">Hold to Talk</span>
+            </button>
+
+            <div class="voice-hint">
+              Try saying:<br>
+              "Tell me a story"<br>
+              "I'm feeling worried"<br>
+              "Tell me a joke"
+            </div>
+
+            <button class="back-btn" onclick="goTo('home')">← Back to Home</button>
+
+          </div>
+
+          <!-- main chat -->
+          <div class="chat-main">
+
+            <div class="chat-topbar">
+              <h2>💬 Chat with Luna</h2>
+              <div class="online-pill">
+                <div class="odot"></div>
+                Always here for you
+              </div>
+            </div>
+
+            <div class="chat-msgs" id="chat-msgs">
+              <div class="msg luna">
+                <div class="msg-who">Luna</div>
+                <div class="bubble" id="luna-greeting-bubble">
+                  Hey there! 🌙 I'm so happy you're here. How are you feeling today?
+                </div>
+                <div class="msg-ts">Just now</div>
+              </div>
+            </div>
+
+            <div class="qr-strip" id="qr-strip">
+              <div class="qr" onclick="sendQ('Tell me a story 📖')">Tell me a story 📖</div>
+              <div class="qr" onclick="sendQ('Play a game! 🎮')">Play a game! 🎮</div>
+              <div class="qr" onclick="sendQ('I\'m feeling worried 😟')">I'm feeling worried 😟</div>
+              <div class="qr" onclick="sendQ('Tell me a joke 😂')">Tell me a joke 😂</div>
+              <div class="qr" onclick="sendQ('I miss home 🏠')">I miss home 🏠</div>
+            </div>
+
+            <div class="input-bar">
+              <input class="txt-input" id="txt-input" placeholder="Type something to Luna..."
+                onkeydown="if(event.key==='Enter') sendTyped()">
+              <div class="send-btn" onclick="sendTyped()">➤</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. MUSIC -->
+      <div class="view" id="view-music">
+        <div class="sky"></div>
+
+        <div class="topbar">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="back-btn" onclick="goTo('home')">← Home</button>
+            <span style="font-size:16px;font-weight:900;color:white;">🎵 Music & Lullabies</span>
+          </div>
+          <div class="topbar-right">
+            <span class="ico">📶 🔋</span>
+            <span class="clk">7:30 pm</span>
+          </div>
+        </div>
+
+        <div class="music-body">
+
+          <div class="now-col">
+            <div class="np-disc" id="np-disc">🌙</div>
+            <div class="np-info">
+              <div class="np-title" id="np-title">Moonbeam Lullaby</div>
+              <div class="np-artist" id="np-artist">Luna · Calming Collection</div>
+            </div>
+            <div class="prog-wrap">
+              <div class="prog-bar">
+                <div class="prog-fill"></div>
+                <div class="prog-dot"></div>
+              </div>
+              <div class="prog-times">
+                <span>0:42</span>
+                <span>2:18</span>
+              </div>
+            </div>
+            <div class="ctrl-row">
+              <div class="ctrl">⏮</div>
+              <div class="play-btn" id="play-btn" onclick="togglePlay()">⏸</div>
+              <div class="ctrl">⏭</div>
+            </div>
+          </div>
+
+          <div class="playlist-col">
+            <div class="pl-head">Luna's Playlist for You</div>
+            <div class="pl-scroll">
+
+              <div class="pl-item now" id="pl-0" onclick="selectSong(0)">
+                <div class="pl-art" style="background:rgba(196,181,253,.15)">🌙</div>
+                <div class="pl-info">
+                  <div class="pl-name">Moonbeam Lullaby</div>
+                  <div class="pl-artist">Calming Collection</div>
+                </div>
+                <div class="pl-waves">
+                  <div class="pw"></div>
+                  <div class="pw"></div>
+                  <div class="pw"></div>
+                </div>
+              </div>
+
+              <div class="pl-item" id="pl-1" onclick="selectSong(1)">
+                <div class="pl-art" style="background:rgba(110,231,183,.1)">🌊</div>
+                <div class="pl-info">
+                  <div class="pl-name">Ocean Breeze Dreams</div>
+                  <div class="pl-artist">Sleep Sounds</div>
+                </div>
+                <div class="pl-dur">3:12</div>
+              </div>
+
+              <div class="pl-item" id="pl-2" onclick="selectSong(2)">
+                <div class="pl-art" style="background:rgba(253,230,138,.12)">⭐</div>
+                <div class="pl-info">
+                  <div class="pl-name">Starlight Journey</div>
+                  <div class="pl-artist">Adventure Stories</div>
+                </div>
+                <div class="pl-dur">4:05</div>
+              </div>
+
+              <div class="pl-item" id="pl-3" onclick="selectSong(3)">
+                <div class="pl-art" style="background:rgba(252,165,165,.1)">🌸</div>
+                <div class="pl-info">
+                  <div class="pl-name">Gentle Garden Rain</div>
+                  <div class="pl-artist">Nature Sounds</div>
+                </div>
+                <div class="pl-dur">5:30</div>
+              </div>
+
+              <div class="pl-item" id="pl-4" onclick="selectSong(4)">
+                <div class="pl-art" style="background:rgba(167,139,250,.15)">🦋</div>
+                <div class="pl-info">
+                  <div class="pl-name">Butterfly Waltz</div>
+                  <div class="pl-artist">Soft Classical</div>
+                </div>
+                <div class="pl-dur">2:55</div>
+              </div>
+
+              <div class="pl-item" id="pl-5" onclick="selectSong(5)">
+                <div class="pl-art" style="background:rgba(110,231,183,.12)">🌿</div>
+                <div class="pl-info">
+                  <div class="pl-name">Whispering Willows</div>
+                  <div class="pl-artist">Nature Sounds</div>
+                </div>
+                <div class="pl-dur">6:10</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 5. GAMES -->
+      <div class="view" id="view-games">
+        <div class="sky"></div>
+
+        <div class="topbar">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="back-btn" onclick="goTo('home')">← Home</button>
+            <span style="font-size:16px;font-weight:900;color:white;">🎮 Games & Fun</span>
+          </div>
+          <div class="topbar-right">
+            <span class="ico">📶 🔋</span>
+            <span class="clk">7:30 pm</span>
+          </div>
+        </div>
+
+        <div class="games-body">
+
+          <div class="games-header-text">
+            <h2>What do you want to play? 🎉</h2>
+            <p>Pick a game and Luna will play with you!</p>
+          </div>
+
+          <div class="games-grid">
+
+            <div class="game-card">
+              <div class="game-icon fi-purple">🎭</div>
+              <div class="game-name">Would You Rather</div>
+              <div class="game-desc">Fun choices with Luna — you might be surprised!</div>
+              <div class="game-badge badge-fun">Fun</div>
+            </div>
+
+            <div class="game-card">
+              <div class="game-icon fi-yellow">🧠</div>
+              <div class="game-name">Riddles & Trivia</div>
+              <div class="game-desc">Test your brain with tricky riddles and fun facts.</div>
+              <div class="game-badge badge-think">Think</div>
+            </div>
+
+            <div class="game-card">
+              <div class="game-icon fi-green">📖</div>
+              <div class="game-name">Story Time</div>
+              <div class="game-desc">Luna tells you a magical story — you pick the adventure!</div>
+              <div class="game-badge badge-chill">Chill</div>
+            </div>
+
+            <div class="game-card">
+              <div class="game-icon fi-red">🎨</div>
+              <div class="game-name">Draw & Describe</div>
+              <div class="game-desc">Luna describes something and you try to draw it!</div>
+              <div class="game-badge badge-creative">Creative</div>
+            </div>
+
+            <div class="game-card">
+              <div class="game-icon fi-blue">🔢</div>
+              <div class="game-name">Number Games</div>
+              <div class="game-desc">Fun maths games that don't feel like school!</div>
+              <div class="game-badge badge-think">Think</div>
+            </div>
+
+            <div class="game-card">
+              <div class="game-icon fi-pink">😂</div>
+              <div class="game-name">Jokes & Laughs</div>
+              <div class="game-desc">Luna's got jokes. Bad ones. Great ones. All of them.</div>
+              <div class="game-badge badge-fun">Fun</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. HOUSE INFO -->
+      <div class="view" id="view-info">
+        <div class="sky"></div>
+
+        <div class="topbar">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="back-btn" onclick="goTo('home')">← Home</button>
+            <span style="font-size:16px;font-weight:900;color:white;">📋 House Info</span>
+          </div>
+          <div class="topbar-right">
+            <span class="ico">📶 🔋</span>
+            <span class="clk">7:30 pm</span>
+          </div>
+        </div>
+
+        <div class="info-body">
+
+          <div class="info-left">
+
+            <div class="wifi-card">
+              <div class="wifi-label">📶 Wi-Fi Network</div>
+              <div class="wifi-name">RMHC_Westmead</div>
+              <div class="wifi-pass-row">
+                <div class="wifi-pass-label">Password</div>
+                <div class="wifi-pass-value">rmhc2024</div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-title"><span>🕐</span> Today's Hours</div>
+              <div class="info-row">
+                <div class="info-row-label">Front Desk</div>
+                <div class="info-row-value">24 / 7</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Kitchen</div>
+                <div class="info-row-value">6am – 10pm</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Laundry</div>
+                <div class="info-row-value">7am – 9pm</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Play Room</div>
+                <div class="info-row-value">8am – 8pm</div>
+              </div>
+            </div>
+
+            <div class="notice-card">
+              <div class="notice-title">📢 Notice</div>
+              <div class="notice-text">Family dinner tonight at 6pm in the communal kitchen. All families welcome!</div>
+            </div>
+
+          </div>
+
+          <div class="info-right">
+
+            <div class="info-section-label">🍽️ Meal Schedule</div>
+
+            <div class="info-card">
+              <div class="info-card-title"><span>☀️</span> Breakfast</div>
+              <div class="info-row">
+                <div class="info-row-label">Time</div>
+                <div class="info-row-value">7:00am – 9:00am</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Location</div>
+                <div class="info-row-value">Communal Kitchen</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Today</div>
+                <div class="info-row-value">Cereal, toast, fruit</div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-title"><span>🌤️</span> Lunch</div>
+              <div class="info-row">
+                <div class="info-row-label">Time</div>
+                <div class="info-row-value">12:00pm – 1:30pm</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Location</div>
+                <div class="info-row-value">Communal Kitchen</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Today</div>
+                <div class="info-row-value">Sandwiches, soup, salad</div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-title"><span>🌙</span> Dinner</div>
+              <div class="info-row">
+                <div class="info-row-label">Time</div>
+                <div class="info-row-value">6:00pm – 7:30pm</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Location</div>
+                <div class="info-row-value">Communal Kitchen</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Today</div>
+                <div class="info-row-value">Pasta, garlic bread, salad</div>
+              </div>
+            </div>
+
+            <div class="info-section-label">🏠 Facilities</div>
+
+            <div class="info-card">
+              <div class="info-row">
+                <div class="info-row-label">🚗 Parking</div>
+                <div class="info-row-value">Level B2 — Free for families</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">🧺 Laundry</div>
+                <div class="info-row-value">Room 12 — Coins provided</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">🛁 Bathrooms</div>
+                <div class="info-row-value">End of each hallway</div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">📦 Storage</div>
+                <div class="info-row-value">Ask front desk for your locker</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. CONTACT FRONT DESK -->
+      <div class="view" id="view-contact">
+        <div class="sky"></div>
+
+        <!-- calling overlay -->
+        <div class="calling-overlay" id="calling-overlay">
+          <div class="calling-avatar">👩‍💼</div>
+          <div class="calling-name">Front Desk</div>
+          <div class="calling-status" id="calling-status">Calling...</div>
+          <button class="end-call-btn" onclick="endCall()">📵</button>
+        </div>
+
+        <div class="topbar">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="back-btn" onclick="goTo('home')">← Home</button>
+            <span style="font-size:16px;font-weight:900;color:white;">📞 Contact Front Desk</span>
+          </div>
+          <div class="topbar-right">
+            <span class="ico">📶 🔋</span>
+            <span class="clk">7:30 pm</span>
+          </div>
+        </div>
+
+        <div class="contact-body">
+
+          <div class="contact-left">
+
+            <div class="contact-status-card">
+              <div class="contact-avatar">👩‍💼</div>
+              <div class="contact-name">Front Desk</div>
+              <div class="contact-role">RMHC Westmead</div>
+              <div class="contact-status-pill">
+                <div class="contact-status-dot"></div>
+                Online now
+              </div>
+            </div>
+
+            <button class="call-btn" id="call-btn" onclick="startCall()">
+              <span>📞</span>
+              <span>Call Front Desk</span>
+            </button>
+
+            <div class="contact-info-card">
+              <div class="contact-info-row">
+                <div class="contact-info-icon">📍</div>
+                <div class="contact-info-text">
+                  <div class="contact-info-label">Location</div>
+                  <div class="contact-info-value">Ground Floor, Lobby</div>
+                </div>
+              </div>
+              <div class="contact-info-row">
+                <div class="contact-info-icon">🕐</div>
+                <div class="contact-info-text">
+                  <div class="contact-info-label">Hours</div>
+                  <div class="contact-info-value">24 hours, 7 days</div>
+                </div>
+              </div>
+              <div class="contact-info-row">
+                <div class="contact-info-icon">📱</div>
+                <div class="contact-info-text">
+                  <div class="contact-info-label">Direct Line</div>
+                  <div class="contact-info-value">(02) 9845 0000</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="contact-right">
+
+            <div class="contact-chat-header">
+              <h3>💬 Message Front Desk</h3>
+              <p>Typically replies within a few minutes</p>
+            </div>
+
+            <div class="contact-msgs" id="contact-msgs">
+              <div class="msg desk">
+                <div class="msg-who">Front Desk</div>
+                <div class="bubble">Hi there! 👋 Welcome to RMHC Westmead. How can we help you today?</div>
+                <div class="msg-ts">7:30 PM</div>
+              </div>
+            </div>
+
+            <div class="contact-input-bar">
+              <input class="txt-input" id="contact-input" placeholder="Type a message to front desk..."
+                onkeydown="if(event.key==='Enter') sendContactMsg()">
+              <div class="send-btn" onclick="sendContactMsg()">➤</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="luna.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
