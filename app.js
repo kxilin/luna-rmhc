@@ -286,9 +286,9 @@ async function advanceStory(userMsg) {
   storyHistory.push({ role: 'user', content: userMsg });
 
   try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_API_KEY}` },
       body: JSON.stringify({
         model: 'llama-3.1-8b-instant',
         max_tokens: 400,
@@ -438,9 +438,9 @@ async function sendTqMessage(msg) {
   tqHistory.push({ role: 'user', content: msg });
 
   try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_API_KEY}` },
       body: JSON.stringify({
         model: 'llama-3.1-8b-instant',
         max_tokens: 150,
@@ -480,9 +480,9 @@ function processTqReply(reply, question) {
 
   if (tqQuestionsLeft <= 0) {
     // get Luna to reveal the answer
-    fetch('/api/chat', {
+    fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_API_KEY}` },
       body: JSON.stringify({
         model: 'llama-3.1-8b-instant',
         max_tokens: 80,

@@ -1,4 +1,4 @@
-const GROQ_API_KEY = ''; // ← paste your key here
+const GROQ_API_KEY = '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';
 
 const MODEL = 'llama-3.1-8b-instant';
 let conversationHistory = [];
@@ -48,9 +48,12 @@ async function askLuna(userMessage) {
   });
 
   try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GROQ_API_KEY}`
+      },
       body: JSON.stringify({
         model: MODEL,
         max_tokens: 300,
