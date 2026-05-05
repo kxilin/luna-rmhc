@@ -371,38 +371,41 @@ function endStory() {
 //  20 QUESTIONS
 // ═══════════════════════════════════════
 
-let tqHistory      = [];
+let tqHistory = [];
 let tqQuestionsLeft = 20;
-let tqCategory     = '?';
+let tqCategory = '?';
 
 function buildTwentyQPrompt() {
   const name = activeProfile?.name || 'friend';
+  const categories = ['Animal', 'Food', 'Famous Character', 'Object', 'Place'];
+  const chosen = categories[Math.floor(Math.random() * categories.length)];
+
   return `You are Luna, playing 20 Questions with ${name}.
 
-At the start of the game you secretly pick something (an animal, food, object, or famous character) and remember it for the whole game. Never reveal what it is until the player guesses correctly or runs out of questions.
+You have secretly chosen something from the category: ${chosen}. Remember it for the whole game and never reveal it until the player guesses correctly or runs out of questions.
 
 Rules:
 - Answer every question with Yes, No, or Sometimes — keep it short
 - If the answer gives a strong hint, add a tiny fun clue (max 5 words)
 - If the player guesses correctly, say CORRECT: [what it was] and congratulate them warmly
 - If the player guesses wrong, say WRONG and encourage them to keep trying
-- Track the category of the thing you picked and mention it at the start as CATEGORY: [Animal / Food / Object / Character]
+- Start by announcing: CATEGORY: ${chosen}
 - Be playful and give encouraging hints as questions run low
 - Keep ALL responses very short — one or two lines max`;
 }
 
 async function startTwentyQ() {
-  tqHistory       = [];
+  tqHistory = [];
   tqQuestionsLeft = 20;
 
   goTo('twentyq');
 
-  document.getElementById('tq-history').innerHTML   = '';
-  document.getElementById('tq-end-wrap').style.display   = 'none';
+  document.getElementById('tq-history').innerHTML = '';
+  document.getElementById('tq-end-wrap').style.display = 'none';
   document.getElementById('tq-input-area').style.display = 'flex';
-  document.getElementById('tq-typing').style.display     = 'none';
-  document.getElementById('tq-counter').textContent      = '20';
-  document.getElementById('tq-category').textContent     = '?';
+  document.getElementById('tq-typing').style.display = 'none';
+  document.getElementById('tq-counter').textContent = '20';
+  document.getElementById('tq-category').textContent = '?';
 
   // get Luna to pick something and reveal category
   showTqTyping();
@@ -448,7 +451,7 @@ async function sendTqMessage(msg) {
       })
     });
 
-    const data  = await response.json();
+    const data = await response.json();
     const reply = data.choices[0].message.content;
     tqHistory.push({ role: 'assistant', content: reply });
 
@@ -490,9 +493,9 @@ function processTqReply(reply, question) {
         ]
       })
     })
-    .then(r => r.json())
-    .then(d => showTqEnd(`😅 Out of questions!\n${d.choices[0].message.content}`))
-    .catch(() => showTqEnd('😅 Out of questions! Better luck next time!'));
+      .then(r => r.json())
+      .then(d => showTqEnd(`😅 Out of questions!\n${d.choices[0].message.content}`))
+      .catch(() => showTqEnd('😅 Out of questions! Better luck next time!'));
     return;
   }
 
@@ -508,10 +511,10 @@ function processTqReply(reply, question) {
 
 function addTqEntry(question, answer) {
   const box = document.getElementById('tq-history');
-  const d   = document.createElement('div');
-  d.className  = 'tq-qa';
-  d.id         = 'tq-entry-' + tqHistory.length;
-  d.innerHTML  = `
+  const d = document.createElement('div');
+  d.className = 'tq-qa';
+  d.id = 'tq-entry-' + tqHistory.length;
+  d.innerHTML = `
     <div class="tq-q">You: ${question}</div>
     <div class="tq-a" id="tq-ans-${tqHistory.length}">${answer || '...'}</div>
   `;
@@ -521,26 +524,26 @@ function addTqEntry(question, answer) {
 
 function updateLastTqAnswer(answer) {
   const isYes = /^yes/i.test(answer);
-  const isNo  = /^no/i.test(answer);
-  const ans   = document.getElementById('tq-ans-' + (tqHistory.length - 2));
+  const isNo = /^no/i.test(answer);
+  const ans = document.getElementById('tq-ans-' + (tqHistory.length - 2));
   if (ans) {
     ans.textContent = answer;
     if (isYes) ans.classList.add('yes');
-    if (isNo)  ans.classList.add('no');
+    if (isNo) ans.classList.add('no');
   }
 }
 
 function showTqEnd(msg) {
-  document.getElementById('tq-end-msg').textContent       = msg;
-  document.getElementById('tq-end-wrap').style.display    = 'flex';
-  document.getElementById('tq-input-area').style.display  = 'none';
+  document.getElementById('tq-end-msg').textContent = msg;
+  document.getElementById('tq-end-wrap').style.display = 'flex';
+  document.getElementById('tq-input-area').style.display = 'none';
 }
 
 function showTqTyping() { document.getElementById('tq-typing').style.display = 'flex'; }
-function hideTqTyping()  { document.getElementById('tq-typing').style.display = 'none'; }
+function hideTqTyping() { document.getElementById('tq-typing').style.display = 'none'; }
 
 function endTwentyQ() {
-  tqHistory       = [];
+  tqHistory = [];
   tqQuestionsLeft = 20;
   goTo('home');
 }
