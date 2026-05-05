@@ -12,7 +12,7 @@ function goTo(id) {
 //  PROFILE SELECTION
 // ═══════════════════════════════════════
 
-let activeFamily  = null;
+let activeFamily = null;
 let activeProfile = null;
 
 function selectFamily(familyName) {
@@ -31,19 +31,28 @@ function selectProfile(profile) {
   // update home screen
   document.getElementById('home-greeting-name').textContent = profile.name;
   document.getElementById('home-profile-emoji').textContent = profile.emoji;
-  document.getElementById('home-profile-name').textContent  = profile.name;
+  document.getElementById('home-profile-name').textContent = profile.name;
 
   // personalise Luna's opening message
   const greeting = profile.type === 'child'
     ? `Hey ${profile.name}! 🌙 I'm so happy you're here. How are you feeling today? I'm all yours! 💜`
     : `Hi ${profile.name} 😊 I'm Luna. I'm here to help with anything you need — questions about the house, schedules, or just a chat.`;
 
-  // reset chat UI completely
+  // reset Luna chat
   document.getElementById('chat-msgs').innerHTML = `
     <div class="msg luna">
       <div class="msg-who">Luna</div>
       <div class="bubble" id="luna-greeting-bubble">${greeting}</div>
       <div class="msg-ts">Just now</div>
+    </div>
+  `;
+
+  // reset front desk chat
+  document.getElementById('contact-msgs').innerHTML = `
+    <div class="msg desk">
+      <div class="msg-who">Front Desk</div>
+      <div class="bubble">Hi there! 👋 Welcome to RMHC Westmead. How can we help you today?</div>
+      <div class="msg-ts">7:30 PM</div>
     </div>
   `;
 
@@ -70,9 +79,9 @@ function sendTyped() {
 function submitMessage(text) {
   appendMsg('user', text);
   const box = document.getElementById('chat-msgs');
-  const t   = document.createElement('div');
+  const t = document.createElement('div');
   t.className = 'typing-row';
-  t.id        = 'typing-indicator';
+  t.id = 'typing-indicator';
   t.innerHTML = `
     <div class="msg-who">Luna</div>
     <div class="typing-bub">
@@ -88,7 +97,7 @@ function submitMessage(text) {
 
 function appendMsg(who, text) {
   const box = document.getElementById('chat-msgs');
-  const d   = document.createElement('div');
+  const d = document.createElement('div');
   d.className = 'msg ' + who;
   d.innerHTML = `
     <div class="msg-who">${who === 'user' ? activeProfile?.name || 'You' : 'Luna'}</div>
@@ -103,16 +112,16 @@ function appendMsg(who, text) {
 //  MUSIC
 // ═══════════════════════════════════════
 
-let playing     = true;
+let playing = true;
 let currentSong = 0;
 
 const songs = [
-  { emoji: '🌙', title: 'Moonbeam Lullaby',   artist: 'Calming Collection', dur: '2:18' },
-  { emoji: '🌊', title: 'Ocean Breeze Dreams', artist: 'Sleep Sounds',       dur: '3:12' },
-  { emoji: '⭐', title: 'Starlight Journey',   artist: 'Adventure Stories',  dur: '4:05' },
-  { emoji: '🌸', title: 'Gentle Garden Rain',  artist: 'Nature Sounds',      dur: '5:30' },
-  { emoji: '🦋', title: 'Butterfly Waltz',     artist: 'Soft Classical',     dur: '2:55' },
-  { emoji: '🌿', title: 'Whispering Willows',  artist: 'Nature Sounds',      dur: '6:10' },
+  { emoji: '🌙', title: 'Moonbeam Lullaby', artist: 'Calming Collection', dur: '2:18' },
+  { emoji: '🌊', title: 'Ocean Breeze Dreams', artist: 'Sleep Sounds', dur: '3:12' },
+  { emoji: '⭐', title: 'Starlight Journey', artist: 'Adventure Stories', dur: '4:05' },
+  { emoji: '🌸', title: 'Gentle Garden Rain', artist: 'Nature Sounds', dur: '5:30' },
+  { emoji: '🦋', title: 'Butterfly Waltz', artist: 'Soft Classical', dur: '2:55' },
+  { emoji: '🌿', title: 'Whispering Willows', artist: 'Nature Sounds', dur: '6:10' },
 ];
 
 function togglePlay() {
@@ -123,25 +132,25 @@ function togglePlay() {
 
 function selectSong(index) {
   currentSong = index;
-  const song  = songs[index];
+  const song = songs[index];
 
   // update now playing panel
-  document.getElementById('np-disc').textContent   = song.emoji;
-  document.getElementById('np-title').textContent  = song.title;
+  document.getElementById('np-disc').textContent = song.emoji;
+  document.getElementById('np-title').textContent = song.title;
   document.getElementById('np-artist').textContent = song.artist;
 
   // reset progress bar
-  document.querySelector('.prog-fill').style.width                  = '0%';
-  document.querySelector('.prog-dot').style.left                    = '0%';
+  document.querySelector('.prog-fill').style.width = '0%';
+  document.querySelector('.prog-dot').style.left = '0%';
   document.querySelector('.prog-times span:first-child').textContent = '0:00';
-  document.querySelector('.prog-times span:last-child').textContent  = song.dur;
+  document.querySelector('.prog-times span:last-child').textContent = song.dur;
 
   // update playlist — highlight selected, swap waves/duration
   document.querySelectorAll('.pl-item').forEach((el, i) => {
     el.classList.toggle('now', i === index);
 
     const waves = el.querySelector('.pl-waves');
-    const dur   = el.querySelector('.pl-dur');
+    const dur = el.querySelector('.pl-dur');
 
     if (i === index && !waves) {
       const w = document.createElement('div');
@@ -152,7 +161,7 @@ function selectSong(index) {
 
     if (i !== index && waves) {
       const d = document.createElement('div');
-      d.className   = 'pl-dur';
+      d.className = 'pl-dur';
       d.textContent = songs[i].dur;
       el.replaceChild(d, waves);
     }
