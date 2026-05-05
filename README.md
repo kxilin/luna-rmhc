@@ -36,6 +36,6 @@ In the full product, staff would have a simple web portal to:
 
 ## Built With
 
-HTML, CSS, JavaScript — hosted on Netlify with a serverless function to keep the AI API key secure.
+HTML, CSS, JavaScript.
 
 ---
