@@ -201,8 +201,9 @@
   justify-content: center;
   cursor: pointer;
   animation: floatY 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 28px rgba(155, 135, 245, .6));
+  filter: drop-shadow(0 0 28px rgba(155,135,245,.6));
   transition: filter .2s;
+  max-width: 160px;
 }
 
 .luna-img-wrap:hover {
@@ -211,7 +212,9 @@
 
 .luna-img {
   width: 160px;
+  max-width: 160px;
   height: auto;
+  display: block;
 }
 
 /* ── LUNA IMAGE SMALL ── */
@@ -221,12 +224,15 @@
   align-items: center;
   justify-content: center;
   animation: floatY 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 14px rgba(155, 135, 245, .5));
+  filter: drop-shadow(0 0 14px rgba(155,135,245,.5));
+  max-width: 80px;
 }
 
 .luna-img-sm {
   width: 80px;
+  max-width: 80px;
   height: auto;
+  display: block;
 }
 
 /* ── ICON COLOURS (shared across screens) ── */
