@@ -1,8 +1,54 @@
 /* ── ANIMATIONS ── */
-@keyframes floatY    { 0%,100%{transform:translateY(0)}       50%{transform:translateY(-8px)} }
-@keyframes glowPulse { 0%,100%{opacity:.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.1)} }
-@keyframes blink     { 0%,88%,100%{transform:scaleY(1)}       92%{transform:scaleY(.07)} }
-@keyframes odotblink { 0%,100%{opacity:1}                     50%{opacity:.3} }
+@keyframes floatY {
+
+  0%,
+  100% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-8px)
+  }
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    opacity: .7;
+    transform: scale(1)
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1)
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  88%,
+  100% {
+    transform: scaleY(1)
+  }
+
+  92% {
+    transform: scaleY(.07)
+  }
+}
+
+@keyframes odotblink {
+
+  0%,
+  100% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: .3
+  }
+}
 
 /* ── SKY BACKGROUND ── */
 .sky {
@@ -12,28 +58,31 @@
   pointer-events: none;
   background: radial-gradient(ellipse 100% 80% at 50% -5%, #2e45b8 0%, #1a2870 50%, #0f1a58 100%);
 }
+
 .sky::after {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(1.5px 1.5px at 7%  17%, rgba(255,255,255,.85) 0%, transparent 100%),
-    radial-gradient(1px   1px   at 19%  7%, rgba(255,255,255,.65) 0%, transparent 100%),
-    radial-gradient(2px   2px   at 63% 11%, rgba(253,230,138,.95) 0%, transparent 100%),
-    radial-gradient(1px   1px   at 81%  5%, rgba(255,255,255,.75) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 91% 21%, rgba(255,255,255,.65) 0%, transparent 100%),
-    radial-gradient(1px   1px   at 44%  6%, rgba(255,255,255,.55) 0%, transparent 100%),
-    radial-gradient(1px   1px   at 32% 19%, rgba(255,255,255,.45) 0%, transparent 100%),
-    radial-gradient(1px   1px   at 74% 34%, rgba(255,255,255,.35) 0%, transparent 100%);
+    radial-gradient(1.5px 1.5px at 7% 17%, rgba(255, 255, 255, .85) 0%, transparent 100%),
+    radial-gradient(1px 1px at 19% 7%, rgba(255, 255, 255, .65) 0%, transparent 100%),
+    radial-gradient(2px 2px at 63% 11%, rgba(253, 230, 138, .95) 0%, transparent 100%),
+    radial-gradient(1px 1px at 81% 5%, rgba(255, 255, 255, .75) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 91% 21%, rgba(255, 255, 255, .65) 0%, transparent 100%),
+    radial-gradient(1px 1px at 44% 6%, rgba(255, 255, 255, .55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 32% 19%, rgba(255, 255, 255, .45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 74% 34%, rgba(255, 255, 255, .35) 0%, transparent 100%);
 }
 
 /* ── MOON ── */
 .moon-deco {
   position: absolute;
-  top: 14px; right: 16px;
-  z-index: 2; pointer-events: none;
+  top: 14px;
+  right: 16px;
+  z-index: 2;
+  pointer-events: none;
   font-size: 36px;
-  filter: drop-shadow(0 0 12px rgba(253,230,138,.6));
+  filter: drop-shadow(0 0 12px rgba(253, 230, 138, .6));
   animation: floatY 6s ease-in-out infinite;
 }
 
@@ -47,132 +96,160 @@
   position: relative;
   z-index: 5;
 }
-.brand { display: flex; align-items: center; gap: 10px; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .brand-logo {
-  width: 38px; height: 38px;
-  border-radius: 9px; background: white;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
   flex-shrink: 0;
 }
-.brand-text .b1 { font-size: 10.5px; font-weight: 900; color: white; line-height: 1.25; }
-.brand-text .b2 { font-size: 8.5px;  font-weight: 600; color: rgba(255,255,255,.6); }
-.topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.topbar-right .ico { font-size: 13px; color: white; }
-.topbar-right .clk { font-size: 12px; font-weight: 800; color: white; }
+
+.brand-text .b1 {
+  font-size: 10.5px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.25;
+}
+
+.brand-text .b2 {
+  font-size: 8.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .6);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.topbar-right .ico {
+  font-size: 13px;
+  color: white;
+}
+
+.topbar-right .clk {
+  font-size: 12px;
+  font-weight: 800;
+  color: white;
+}
 
 /* ── BACK BUTTON ── */
 .back-btn {
   padding: 7px 16px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.15);
-  background: rgba(255,255,255,.06);
-  color: rgba(255,255,255,.75);
+  border: 1px solid rgba(255, 255, 255, .15);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .75);
   font-family: 'Nunito', sans-serif;
-  font-size: 12px; font-weight: 700;
-  cursor: pointer; transition: background .18s;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .18s;
 }
-.back-btn:hover { background: rgba(255,255,255,.13); color: white; }
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, .13);
+  color: white;
+}
 
 /* ── ACTIVE PROFILE PILL ── */
 .active-profile-pill {
-  display: flex; align-items: center; gap: 7px;
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.15);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .15);
   border-radius: 100px;
   padding: 6px 14px;
   cursor: pointer;
   transition: background .18s;
 }
-.active-profile-pill:hover { background: rgba(255,255,255,.16); }
-.active-profile-pill span:first-child { font-size: 18px; }
-.active-profile-pill span:last-child  { font-size: 13px; font-weight: 800; color: white; }
 
-/* ── LUNA ORB LARGE ── */
-.orb-wrap {
+.active-profile-pill:hover {
+  background: rgba(255, 255, 255, .16);
+}
+
+.active-profile-pill span:first-child {
+  font-size: 18px;
+}
+
+.active-profile-pill span:last-child {
+  font-size: 13px;
+  font-weight: 800;
+  color: white;
+}
+
+/* ── LUNA IMAGE LARGE ── */
+.luna-img-wrap {
   position: relative;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   animation: floatY 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 22px rgba(155,135,245,.55));
+  filter: drop-shadow(0 0 28px rgba(155, 135, 245, .6));
   transition: filter .2s;
 }
-.orb-wrap:hover { filter: drop-shadow(0 0 32px rgba(155,135,245,.85)); }
-.orb-glow1 {
-  position: absolute; inset: -22px; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, rgba(155,135,245,.32) 0%, transparent 70%);
-  animation: glowPulse 3s ease-in-out infinite;
-}
-.orb-glow2 {
-  position: absolute; inset: -40px; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, rgba(155,135,245,.13) 0%, transparent 65%);
-  animation: glowPulse 3s ease-in-out infinite 1s;
-}
-.orb-ball {
-  width: 140px; height: 140px; border-radius: 50%;
-  background: radial-gradient(circle at 36% 30%, #ede8ff 0%, #c4b5fd 20%, #9b87f5 46%, #6c5ce7 70%, #4c3ac4 100%);
-  box-shadow: inset 0 -22px 40px rgba(50,30,150,.45), inset 10px -10px 22px rgba(255,255,255,.12);
-  position: relative;
-}
-.orb-face {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 8px;
-}
-.orb-eyes { display: flex; gap: 20px; }
-.orb-eye {
-  width: 14px; height: 14px; border-radius: 50%; background: #1a0e50;
-  position: relative; animation: blink 5.5s ease-in-out infinite;
-}
-.orb-eye::after {
-  content: ''; position: absolute; top: 3px; left: 3px;
-  width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.78);
-}
-.orb-mouth {
-  width: 26px; height: 13px;
-  border: 3px solid #1a0e50; border-top: none;
-  border-radius: 0 0 26px 26px;
-}
-.orb-cheeks { display: flex; gap: 30px; }
-.orb-cheek  { width: 13px; height: 7px; border-radius: 50%; background: rgba(252,165,165,.48); }
 
-/* ── LUNA ORB SMALL ── */
-.orb-sm {
+.luna-img-wrap:hover {
+  filter: drop-shadow(0 0 40px rgba(155, 135, 245, .9));
+}
+
+.luna-img {
+  width: 160px;
+  height: auto;
+}
+
+/* ── LUNA IMAGE SMALL ── */
+.luna-img-wrap-sm {
   position: relative;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   animation: floatY 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 12px rgba(155,135,245,.45));
+  filter: drop-shadow(0 0 14px rgba(155, 135, 245, .5));
 }
-.orb-sm-ball {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: radial-gradient(circle at 36% 30%, #ede8ff 0%, #c4b5fd 20%, #9b87f5 46%, #6c5ce7 70%, #4c3ac4 100%);
-  box-shadow: inset 0 -10px 20px rgba(50,30,150,.4), inset 5px -5px 10px rgba(255,255,255,.1);
-  position: relative;
+
+.luna-img-sm {
+  width: 80px;
+  height: auto;
 }
-.orb-sm-face {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 5px;
-}
-.sm-eyes { display: flex; gap: 11px; }
-.sm-eye {
-  width: 9px; height: 9px; border-radius: 50%; background: #1a0e50;
-  position: relative; animation: blink 5.5s ease-in-out infinite;
-}
-.sm-eye::after {
-  content: ''; position: absolute; top: 2px; left: 2px;
-  width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.78);
-}
-.sm-mouth  { width: 14px; height: 7px; border: 2px solid #1a0e50; border-top: none; border-radius: 0 0 14px 14px; }
-.sm-cheeks { display: flex; gap: 16px; }
-.sm-cheek  { width: 8px; height: 5px; border-radius: 50%; background: rgba(252,165,165,.45); }
 
 /* ── ICON COLOURS (shared across screens) ── */
-.fi-purple { background: #ede9ff; }
-.fi-red    { background: #ffe4e4; }
-.fi-green  { background: #d4f4e8; }
-.fi-yellow { background: #fff8d6; }
-.fi-blue   { background: #dbeafe; }
-.fi-pink   { background: #fce7f3; }
+.fi-purple {
+  background: #ede9ff;
+}
+
+.fi-red {
+  background: #ffe4e4;
+}
+
+.fi-green {
+  background: #d4f4e8;
+}
+
+.fi-yellow {
+  background: #fff8d6;
+}
+
+.fi-blue {
+  background: #dbeafe;
+}
+
+.fi-pink {
+  background: #fce7f3;
+}

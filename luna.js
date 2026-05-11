@@ -1,4 +1,4 @@
-const GROQ_API_KEY = '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';
+const GROQ_API_KEY = 'TODO';
 
 const MODEL = 'llama-3.1-8b-instant';
 let conversationHistory = [];
