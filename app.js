@@ -1,9 +1,11 @@
 // ── SCALE TABLET TO FIT SCREEN ──
 function scaleTablet() {
-  const scaleX = window.innerWidth / 1008; // 980px + 28px padding
-  const scaleY = window.innerHeight / 728;  // 700px + 28px padding
-  const scale = Math.min(scaleX, scaleY, 1); // never scale up, only down
-  document.querySelector('.tablet-outer').style.setProperty('--tablet-scale', scale);
+  const el     = document.querySelector('.tablet-outer');
+  const scaleX = window.innerWidth  / 1008;
+  const scaleY = window.innerHeight / 728;
+  const scale  = Math.min(scaleX, scaleY, 1);
+  el.style.transform = `scale(${scale})`;
+  el.style.marginTop = `-${(1 - scale) * 700 / 2}px`;
 }
 
 scaleTablet();
