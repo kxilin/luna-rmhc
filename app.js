@@ -4,12 +4,17 @@ function scaleTablet() {
   const scaleX = window.innerWidth / 1008;
   const scaleY = window.innerHeight / 728;
   const scale = Math.min(scaleX, scaleY);
+  
   el.style.transform = `scale(${scale})`;
-  el.style.marginLeft = `-${(980 - 980 * scale) / 2}px`;
-  el.style.marginTop = `-${(700 - 700 * scale) / 2}px`;
+  el.style.position = 'absolute';
+  el.style.top = '50%';
+  el.style.left = '50%';
+  el.style.marginLeft = '-490px';
+  el.style.marginTop = '-350px';
 }
 
 scaleTablet();
+window.addEventListener('resize', scaleTablet);
 window.addEventListener('resize', scaleTablet);
 
 // ═══════════════════════════════════════
