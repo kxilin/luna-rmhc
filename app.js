@@ -1,8 +1,12 @@
 // ── SCALE TABLET TO FIT SCREEN ──
 function scaleTablet() {
   const el = document.querySelector('.tablet-outer');
-  const scale = Math.min(window.innerWidth / 1008, window.innerHeight / 728);
+  const scaleX = window.innerWidth / 1008;
+  const scaleY = window.innerHeight / 728;
+  const scale = Math.min(scaleX, scaleY);
   el.style.transform = `scale(${scale})`;
+  el.style.marginLeft = `-${(980 - 980 * scale) / 2}px`;
+  el.style.marginTop = `-${(700 - 700 * scale) / 2}px`;
 }
 
 scaleTablet();

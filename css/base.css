@@ -4,16 +4,17 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
+html, body {
+  width: 100dvw;
+  height: 100dvh;
   background: #070e24;
   font-family: 'Nunito', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .tablet-outer {
